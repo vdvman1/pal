@@ -23,7 +23,9 @@ public class TilePal extends TileEntity {
 			for(int j = 0; j < 3; j++) {
 				if(i + j < truthTable.length) {
 					combined |= i + j << (10 * j + 1);
-					combined |= 1 << (10 * j);
+					if(truthTable[i+j]) {
+						combined |= 1 << (10 * j);
+					} //else leave off
 				}
 			}
 			array.add(combined);
