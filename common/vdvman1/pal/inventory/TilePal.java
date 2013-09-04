@@ -37,6 +37,14 @@ public class TilePal extends TileEntity {
 	public void readFromNBT(NBTTagCompound tagCompound)
 	{
 		super.readFromNBT(tagCompound);
+		int[] array = tagCompound.getIntArray("truthTable");
+		for(int i = 0; i < array.length; i++) {
+			for(int j = 0; j < 3; j++) {
+				int temp = array[i] >> (10 * j);
+				int elem = (temp >> 1) & 0b111_111111;
+				truthTable[elem] = (temp & 1) != 0;
+			}
+		}
 	}
 
 }
