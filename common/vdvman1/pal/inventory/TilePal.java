@@ -35,7 +35,7 @@ public class TilePal extends TileEntity {
 		}
 		tagCompound.setIntArray("truthTable", Ints.toArray(array));
 		//save inputs and outputs in a single int
-		int inputsOutputs = 0;
+		short inputsOutputs = 0;
 		for(int i = 0; i < inputs.length; i++) {
 			if(inputs[i]) { //Only set if true, default 0
 				inputsOutputs |= 1 << i;
@@ -46,7 +46,7 @@ public class TilePal extends TileEntity {
 				inputsOutputs |= 1 << (i + 6);
 			}
 		}
-		tagCompound.setInteger("inputsOutputs", inputsOutputs);
+		tagCompound.setShort("inputsOutputs", inputsOutputs);
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class TilePal extends TileEntity {
 			}
 		}
 		//Load inputs and outputs from single int
-		int inputsOutputs = tagCompound.getInteger("inputsOutputs");
+		short inputsOutputs = tagCompound.getShort("inputsOutputs");
 		for(int i = 0; i < 6; i++) {
 			inputs[i] = ((inputsOutputs >> i) & 1) != 0;
 		}
