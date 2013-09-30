@@ -14,6 +14,15 @@ public class TilePal extends TileEntity {
 	public boolean[] truthTable = new boolean[0b110_111111 + 1]; //plus 1 to include 110_111111
 	public boolean[] inputs = {false, false, false, false, false, false};
 	public boolean[] outputs = {false, false, false, false, false, false};
+	
+	public boolean isSideActive(int side) {
+		return inputs[side] || outputs[side];
+	}
+	
+	public boolean isSideOn(int side) {
+		//TODO: check which sides are actually on
+		return false;
+	}
 
 	@Override
 	public void writeToNBT(NBTTagCompound tagCompound)
