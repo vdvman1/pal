@@ -3,6 +3,7 @@ package vdvman1.pal;
 import net.minecraftforge.common.Configuration;
 import vdvman1.pal.block.PalBlocks;
 import vdvman1.pal.gui.GuiHandler;
+import vdvman1.pal.inventory.TilePal;
 import vdvman1.pal.packet.PacketHandler;
 import vdvman1.pal.proxy.CommonProxy;
 import cpw.mods.fml.common.Mod;
@@ -12,6 +13,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = Pal.modid, name = Pal.modName, version = Pal.version)
@@ -39,9 +41,11 @@ public class Pal {
     //Called during initialization, used for registering everything etc.
     @EventHandler
     public void init(FMLInitializationEvent event) {
-        proxy.registerRenderers();
         //register gui
         NetworkRegistry.instance().registerGuiHandler(this, new GuiHandler());
+        
+        proxy.registerTileEntities();
+        proxy.initRendering();
     }
 
 }

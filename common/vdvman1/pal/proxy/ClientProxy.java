@@ -12,9 +12,15 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 public class ClientProxy extends CommonProxy {
 	
 	@Override
-	public void registerRenderers() {
-		ModelPal.modelID = RenderingRegistry.getNextAvailableRenderId();
+	public void registerTileEntities() {
+		super.registerTileEntities();
+		
 		ClientRegistry.bindTileEntitySpecialRenderer(TilePal.class, new TilePalRenderer());
+	}
+	
+	@Override
+	public void initRendering() {
+		ModelPal.modelID = RenderingRegistry.getNextAvailableRenderId();
 		MinecraftForgeClient.registerItemRenderer(PalBlocks.palBlockID, new ItemPalRenderer());
 	}
 

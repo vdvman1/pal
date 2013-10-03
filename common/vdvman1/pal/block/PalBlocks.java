@@ -12,7 +12,8 @@ public class PalBlocks {
 	public static Block palBlock;
 	
 	public static void init(Configuration config) {
-		palBlock = new BlockPal(config.getBlock("palBlockID", palBlockID).getInt(palBlockID));
+		palBlockID = config.getBlock("palBlockID", palBlockID).getInt(palBlockID);
+		palBlock = new BlockPal(palBlockID);
 		
 		GameRegistry.registerBlock(palBlock, "progLogArry");
 	}

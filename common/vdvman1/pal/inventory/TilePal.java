@@ -12,7 +12,7 @@ public class TilePal extends TileEntity {
 	//output side 0-6    inputs
 	//      000          000000
 	public boolean[] truthTable = new boolean[0b110_111111 + 1]; //plus 1 to include 110_111111
-	public boolean[] inputs = {false, false, false, false, false, false};
+	public boolean[] inputs = {true, false, false, false, false, false};
 	public boolean[] outputs = {false, false, false, false, false, false};
 	
 	public boolean isSideActive(int side) {

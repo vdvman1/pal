@@ -11,7 +11,11 @@ import cpw.mods.fml.client.FMLClientHandler;
 
 public class ItemPalRenderer implements IItemRenderer {
 
-	ModelPal model = new ModelPal();
+	private ModelPal model;
+	
+	public ItemPalRenderer() {
+		model = new ModelPal();
+	}
 	
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
@@ -54,7 +58,7 @@ public class ItemPalRenderer implements IItemRenderer {
 	    	GL11.glScalef(scale, scale, scale);
 	    	GL11.glRotatef(180f, 0f, 1f, 0f);
 	     
-	    	FMLClientHandler.instance().getClient().renderEngine.func_110577_a(new ResourceLocation("/assets/pal/models/pal.png"));
+	    	FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation("pal", "models/pal.png"));
 	     
 	    	model.renderAll();
 	    GL11.glEnable(GL11.GL_LIGHTING);

@@ -34,8 +34,8 @@ public class ModelPal extends ModelBase {
 	{
 	    GL11.glPushMatrix();
 	    	GL11.glTranslatef((float)x + 0.5f, (float)y + 0.5f, (float)z + 0.5f);
-	    	//GL11.glScalef(0.5f, 0.5f, 0.5f);
-	    	FMLClientHandler.instance().getClient().renderEngine.func_110577_a(new ResourceLocation("/assets/pal/models/pal.png"));
+	    	GL11.glScalef(0.5f, 0.5f, 0.5f);
+	    	FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation("pal:models/pal.png"));
 	    	modelPal.renderPart("Center");
 	    	for(int i = 0; i < 6; i++) {
 	    		if(pal.isSideActive(i)) {
