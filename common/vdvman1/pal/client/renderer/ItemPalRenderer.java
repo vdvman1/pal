@@ -29,34 +29,35 @@ public class ItemPalRenderer implements IItemRenderer {
 
 	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
-		switch(type)
-	    {
-	        case ENTITY:{
-	            render(0f, 0f, 0f, 0.5f);
-	            return;
-	        }
-	         
-	        case EQUIPPED:{
-	            render(0f, 1f, 1f, 0.5f);
-	            return;
-	        }
-	             
-	        case INVENTORY:{
-	            render(0f, 0f, 0f, 0.5f);
-	            return;
-	        }
-	         
-	        default:return;
-	    }
+		switch (type) {
+        case ENTITY: {
+            render(0F, 0.5F, 0F, 1F, 0f, 0f, 0f, 0f);
+            return;
+        }
+        case EQUIPPED: {
+            render(1F, 1F, 1F, 0.7F, 180f, 0f, 1f, 0f);
+            return;
+        }
+        case EQUIPPED_FIRST_PERSON: {
+            render(1F, 1F, 1F, 1F, 120f, 0f, 1f, 0f);
+            return;
+        }
+        case INVENTORY: {
+            render(1F, 0.8F, 1F, 0.8F, 180f, 0f, 1f, 0f);
+            return;
+        }
+        default:
+            return;
+    }
 	}
 	
-	private void render(float x, float y, float z, float scale)
+	private void render(float x, float y, float z, float scale, float degrees, float rotx, float roty, float rotz)
 	{
 	    GL11.glPushMatrix();
 	    GL11.glDisable(GL11.GL_LIGHTING);
-	    	GL11.glTranslatef(x,  y,  z);
 	    	GL11.glScalef(scale, scale, scale);
-	    	GL11.glRotatef(180f, 0f, 1f, 0f);
+	    	GL11.glTranslatef(x,  y,  z);
+	    	GL11.glRotatef(degrees, rotx, roty, rotz);
 	     
 	    	FMLClientHandler.instance().getClient().renderEngine.bindTexture(new ResourceLocation("pal", "models/pal.png"));
 	     
